@@ -1,10 +1,8 @@
 module.exports = {
   stories: [
-    "../src/lib/assets/**/*.stories.@(js|jsx|ts|tsx|svelte)",
     "../src/lib/components/**/*.stories.@(js|jsx|ts|tsx|svelte)",
     "../src/lib/headers/**/*.stories.@(js|jsx|ts|tsx|svelte)",
     "../src/lib/styles/*.stories.@(js|jsx|ts|tsx|svelte)",
-    "../src/lib/utils/**/*.stories.@(js|jsx|ts|tsx|svelte)",
     "../src/pages/**/*.stories.@(js|jsx|ts|tsx|svelte|mdx)",
     "../src/*.stories.@(js|jsx|ts|tsx|svelte)",
   ],
