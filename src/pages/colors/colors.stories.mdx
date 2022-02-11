@@ -1,0 +1,175 @@
+import { Meta, ColorPalette, ColorItem } from "@storybook/addon-docs/blocks";
+
+<Meta title="Pages/Colors" />
+
+<style>{`
+  .color-primary { background-color: #254e5e;}
+  .color-secondary { background-color: #f5f5f5;}
+  .color-tertiary { background-color: #666666;}
+
+  .color-primary-dark { background-color: #254e5e;}
+  .color-secondary-dark { background-color: #f5f5f5;}
+  .color-tertiary-dark { background-color: #666666;}
+  
+  .color-canvas {
+    margin: 2rem;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .dark-canvas {
+    height: 100%;
+    width: 50%;
+    padding: 2rem;
+    background-color: #333333;
+  }
+
+  .dark-text {
+    color: #FFFFFF;
+  }
+
+  .dark-sub-text {
+    color: #b7b7b7;
+  }
+
+  .canvas-split {
+    height: 100%;
+    width: 50%;
+    padding: 2rem;
+  }
+
+  .header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    vertical-align: center;
+  }
+
+  .header-box {
+    height: 4rem;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header-name {
+    font-weight: 600;
+    margin-right: 3rem;
+  }
+
+  .header-color {
+    width: 100%;
+    font-weight: 600;
+    border-radius: 5px;
+  }
+
+  .title {
+    font-weight: 700;
+    margin-bottom: 2rem;
+  }
+
+  .swatch {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    vertical-align: center;
+    margin-bottom: 0.8rem;
+  }
+
+  .swatch-name {
+    font-weight: 600;
+    margin-right: 3rem;
+  }
+  
+  .color-box {
+    height: 4.5rem;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .swatch-color {
+    height: 70%;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid black;
+  }
+
+  .swatch-desc {
+    height: 20%;
+    font-size: 0.8em;
+    text-align: center;
+    margin-bottom: 0.2rem;
+  }
+`}</style>
+
+<div class="color-canvas">
+  <div class="canvas-split">
+    <div class="title">Default Theme</div>
+    <div class="header-container">
+      <div class="header-name">Name</div>
+      <div class="header-box">
+        <div class="header-color">Color</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-name">primary</div>
+      <div class="color-box">
+        <div class="swatch-color color-primary" />
+        <div class="swatch-desc">$color-primary</div>
+        <div class="swatch-desc">#254e5e</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-name">secondary</div>
+      <div class="color-box">
+        <div class="swatch-color color-secondary" />
+        <div class="swatch-desc">$color-secondary</div>
+        <div class="swatch-desc">#f5f5f5</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-name">tertiary</div>
+      <div class="color-box">
+        <div class="swatch-color color-tertiary" />
+        <div class="swatch-desc">$color-tertiary</div>
+        <div class="swatch-desc">#666666</div>
+      </div>
+    </div>
+  </div>
+  <div class="dark-canvas">
+    <div class="title dark-text">Dark Theme</div>
+    <div class="header-container">
+      <div class="header-name dark-text">Name</div>
+      <div class="header-box">
+        <div class="header-color dark-text">Color</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-name dark-text">primary</div>
+      <div class="color-box">
+        <div class="swatch-color color-primary" />
+        <div class="swatch-desc dark-sub-text">$color-primary</div>
+        <div class="swatch-desc dark-sub-text">#254e5e</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-name dark-text">secondary</div>
+      <div class="color-box">
+        <div class="swatch-color color-secondary" />
+        <div class="swatch-desc dark-sub-text">$color-secondary</div>
+        <div class="swatch-desc dark-sub-text">#f5f5f5</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-name dark-text">tertiary</div>
+      <div class="color-box">
+        <div class="swatch-color color-tertiary" />
+        <div class="swatch-desc dark-sub-text">$color-tertiary</div>
+        <div class="swatch-desc dark-sub-text">#666666</div>
+      </div>
+    </div>
+  </div>
+</div>
