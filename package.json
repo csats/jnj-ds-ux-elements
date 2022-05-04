@@ -7,6 +7,9 @@
     "type": "git",
     "url": "git+https://github.com/csats/jnj-ds-ux-elements.git"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "keywords": [
     "components",
     "design",
