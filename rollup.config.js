@@ -45,7 +45,6 @@ export default {
   plugins: [
     alias({
       entries: [
-        { find: "@assets", replacement: "./src/lib/assets" },
         { find: "@components", replacement: "./src/lib/components" },
         { find: "@lib", replacement: "./src/lib" },
         { find: "@styles", replacement: "./src/lib/styles" },
