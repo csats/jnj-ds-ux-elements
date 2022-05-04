@@ -25,7 +25,7 @@
   "homepage": "https://github.com/csats/jnj-ds-ux-elements#readme",
   "scripts": {
     "build": "rollup -c",
-    "compile-icons": "npx @svgr/cli -d lib/assets src/lib/assets",
+    "compile-icons": "npx @svgr/cli -d lib/assets",
     "copy-files": "copyfiles --up 1 src/lib/fonts/* lib/*",
     "dev": "rollup -c -w",
     "start": "sirv public --no-clear",
