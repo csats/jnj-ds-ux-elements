@@ -1,5 +1,6 @@
 <script>
   import Button from "./lib/components/button/Button.svelte";
+  import Pill from "./lib/components/pill/Pill.svelte";
 </script>
 
 <main>
