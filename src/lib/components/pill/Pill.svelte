@@ -1,55 +1,114 @@
 <script>
-  export let primary = false;
-  export let hasIcon = false;
-  export let label = "UPLOAD";
-
-  /**
-   * Button click handler
-   */
-  const onClick = () => {
-		const element = document.getElementById("tagPill");
-    if(element.classList.contains('pill-selected')) {
-      element.classList.remove('pill-selected');
-      element.classList.add('pill-deselected');
-    } else {
-      element.classList.remove('pill-deselected');
-      element.classList.add('pill-selected');
-    }
-	}
+  export let isExpertTag = false;
+  export let hasFilterIcon = false;
+  export let hasCloseIcon = false;
+  export let label = "Static Tag";
+  export let color = "primary";
 </script>
 
-<button id="tagPill" on:click={onClick} class="case-context-button pill-deselected" value="context_tag_NephrectomyType_1">Transperitoneal</button>
+<button id="tagPill" class={["case-context-button", color].join(" ")}>
+  {#if isExpertTag}
+    <div class="star-icon" id="star-icon">★</div>
+      <p class="tag-pill-text">{label}</p>
+    <div class="star-icon" id="star-icon">★</div>  
+  {:else}    
+    {#if hasFilterIcon}
+      <div class={["filter-icon", `${color}-filter`].join(" ")} id="filter-icon">✔</div>
+    {/if}
+    <p class="tag-pill-text">{label}</p>
+    {#if hasCloseIcon}
+      <div class={["close-icon", `${color}-close`].join(" ")} id="close-icon">×</div>
+    {/if}
+  {/if}
+</button>
 
 <style>
   .case-context-button {
-    min-width: 0;
-    padding: 6px 12px;
-    font-weight: normal;
-    margin: 2px 4px;
-    box-shadow: none;
-    margin: -2px -3px 0px -3px;
+    border: none;
+    font-weight:400;
     cursor: pointer;
     border-radius: 20px;
-    box-sizing: border-box;
-  }
-  .case-context-button.pill-deselected:hover {
-    background: var(--rgba_solidgray_16,#9c9c9c);
     color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0px 2px;
+    padding: 0px 6px;
+    line-height: 0px;
   }
-
-  .case-context-button.pill-deselected, .case-context-button.pill-deselected:active {
-    background: var(--rgba_solidgray_15,#e8e8e8);
-    border: 1px solid #b9b9b9;
-    color: #7d7d7d;
+  .tag-pill-text {
+    margin-left: 5px;
+    margin-right: 5px;
   }
-
-  .case-context-button.pill-selected:hover {
-    background: #346376;
+  div.star-icon {
+    font-size: 12px;
+    font-weight: bold;
+    border: none;
     color: #ffffff;
+    margin: 0px 3px;
   }
-  .case-context-button.pill-selected, .case-context-button.pill-selected:active, .case-context-button.pill-selected:hover {
-    background: #346376;
-    border: 1px solid #346376;
+  div.filter-icon {
+    font-size: 13px;
+    font-weight: bold;
+    width: 18px;
+  }
+  div.close-icon {
+    cursor:pointer;
+    font-size: 20px;
+    font-weight: bold;
+    display:block;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    border: none;
+    background-color: #ffffff;
+    text-align: center;
+    align-items: center;
+    line-height: 17px;
+  }
+  div.close-icon:hover {
     color: #ffffff;
+    background-color: red;      
+  }
+  .primary {
+    background-color: #346376;
+  }
+  .secondary {
+    background-color: #666666;
+  }
+  .tertiary {
+    background-color: #fd7d00;
+  }
+  .quaternary {
+    background-color: #e1bd6f;
+  }
+  .primary-close {
+    color: #346376;
+  }
+  .secondary-close {
+    color: #666666;
+  }
+  .tertiary-close {
+    color: #fd7d00;
+  }
+  .quaternary-close {
+    color: #e1bd6f;
+  }
+  .primary-filter {
+    color: #346376;
+    filter: brightness(170%);
+  }
+  .secondary-filter {
+    color: #666666;
+    filter: brightness(170%);
+  }
+  .tertiary-filter {
+    color: #fd7d00;
+    filter: brightness(170%);
+  }
+  .quaternary-filter {
+    color: #e1bd6f;
+    filter: brightness(170%);
   }
 </style>

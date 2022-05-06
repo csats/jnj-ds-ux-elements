@@ -7,27 +7,42 @@
   title="Components/Pill"
   component={Pill}
   argTypes={{
+    color: { control: "select", options: ["primary", "secondary", "tertiary", "quaternary"] },
     label: { control: "text" },
-    primary: { control: "boolean" },
-    onClick: { action: "onClick" },
   }}
 />
 
 <Template let:args>
-  <Pill {...args} on:click={args.onClick} />
+  <Pill {...args} />
 </Template>
 
 <Story
-  name="Primary"
+  name="Static Tag"
   args={{
-    primary: true,
-    label: "UPLOAD",
+    label: "Static Tag",
   }}
 />
 
 <Story
-  name="Secondary"
+  name="Close Icon Tag"
   args={{
-    label: "UPLOAD",
+    label: "Gender : Female",
+    hasCloseIcon: true
+  }}
+/>
+
+<Story
+  name="Filter Icon Tag"
+  args={{
+    label: "Filter Tag",
+    hasFilterIcon: true
+  }}
+/>
+
+<Story
+  name="Expert Tag"
+  args={{
+    label: "Expert",
+    isExpertTag: true
   }}
 />
