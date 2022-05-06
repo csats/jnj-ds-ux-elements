@@ -6,7 +6,7 @@
   export let color = "primary";
 </script>
 
-<button id="tagPill" class={["case-context-button", color].join(" ")}>
+<button id="tag-pill" class={["tag-pill", color].join(" ")}>
   {#if isExpertTag}
     <div class="star-icon" id="star-icon">★</div>
       <p class="tag-pill-text">{label}</p>
@@ -23,7 +23,7 @@
 </button>
 
 <style>
-  .case-context-button {
+  .tag-pill {
     border: none;
     font-weight:400;
     cursor: pointer;
