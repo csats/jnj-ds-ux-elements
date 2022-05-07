@@ -7,8 +7,15 @@
   title="Components/Pill"
   component={Pill}
   argTypes={{
-    color: { control: "select", options: ["primary", "secondary", "tertiary", "quaternary"] },
     label: { control: "text" },
+    tagColor: { control: { type: 'color', presetColors: ['#346376', '#666666']} },
+    textColor: { control: { type: 'color', presetColors: ['#346376', '#666666']} },
+    size: { control: { type: 'range', min: 1, max: 100 } },
+    variant: { options: ["Static Tag", "Expert Tag", "Step Filter Tag", "Closeable Tag"], control: { type: 'radio' }, },
+    useHover: { control: 'boolean' },
+    clickColor: { control: { type: 'color', presetColors: ['#346376', '#666666']} },
+    hoverColor: { control: { type: 'color', presetColors: ['#346376', '#666666']} },
+    onClickColor: { control: { type: 'color', presetColors: ['#346376', '#666666']} },
   }}
 />
 
@@ -20,22 +27,53 @@
   name="Static Tag"
   args={{
     label: "Static Tag",
+    variant: "Static Tag",
+    tagColor: "#666666",
+    textColor: "#ffffff"
   }}
 />
 
 <Story
-  name="Close Icon Tag"
+  name="Closeable Tag"
   args={{
     label: "Gender : Female",
-    hasCloseIcon: true
+    variant: "Closeable Tag",
+    tagColor: "#346376",
+    textColor: "#ffffff"
   }}
 />
 
 <Story
-  name="Filter Icon Tag"
+  name="Case Context Tag"
+  args={{
+    label: "BMI 18.5 - 24.9",
+    variant: "Default",
+    clickColor: "#346376",
+    tagColor: "#e8e8e8",
+    textColor: "#7d7d7d",
+    hoverColor: "#9c9c9c",
+    useHover: true,
+  }}
+/>
+
+<Story
+  name="Status Tag"
+  args={{
+    label: "Status Tag",
+    variant: "Default",
+    tagColor: "#f7931e",
+    textColor: "#ffffff",
+    size: 5,
+  }}
+/>
+
+<Story
+  name="Step Filter Tag"
   args={{
     label: "Filter Tag",
-    hasFilterIcon: true
+    variant: "Step Filter Tag",
+    tagColor: "#666666",
+    textColor: "#ffffff"
   }}
 />
 
@@ -43,6 +81,8 @@
   name="Expert Tag"
   args={{
     label: "Expert",
-    isExpertTag: true
+    variant: "Expert Tag",
+    tagColor: "#346376",
+    textColor: "#ffffff"
   }}
 />

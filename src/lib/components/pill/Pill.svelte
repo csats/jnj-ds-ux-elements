@@ -1,23 +1,121 @@
 <script>
-  export let isExpertTag = false;
-  export let hasFilterIcon = false;
-  export let hasCloseIcon = false;
+  export let size = 1;
+  export let useHover = false;
+  export let variant = "Default"
   export let label = "Static Tag";
-  export let color = "primary";
+  export let clickColor = "#7d7d7d";
+  export let tagColor = "#346376";
+  export let textColor = "#ffffff";
+  export let hoverColor = "#9c9c9c";
+  export let hasClicked = false;
+
+  /** Change the style **/
+  function overStyle(object) {
+    object.style.backgroundColor = hoverColor;
+    object.style.color = "#ffffff";
+    // Change some other properties ...
+  }
+
+  /** Restores the style **/
+  function outStyle(object) {
+    if(!hasClicked) {
+      object.style.backgroundColor = tagColor;
+      object.style.color = textColor;
+    }
+    // Restore the rest ...
+  }
+
+  function onClick(object) {
+    hasClicked = !hasClicked;
+    if (object.style.backgroundColor === clickColor) {
+      object.style.backgroundColor = tagColor;
+    } else {
+      object.style.backgroundColor = clickColor;
+    }
+  }
 </script>
 
-<button id="tag-pill" class={["tag-pill", color].join(" ")}>
-  {#if isExpertTag}
-    <div class="star-icon" id="star-icon">★</div>
-      <p class="tag-pill-text">{label}</p>
-    <div class="star-icon" id="star-icon">★</div>  
+<button 
+  id="tag-pill" 
+  class={"tag-pill"}
+  on:mouseover={`${useHover ? overStyle(this) : ""}`} 
+  on:mouseout={`${useHover ? outStyle(this) : ""}`}
+  on:click={`${useHover ? onClick(this) : ""}`}
+  style={`
+    color: ${textColor};
+    background-color: ${tagColor}; 
+    border-radius: ${20 + size * 0.4}px;
+    margin: 0px ${2 + size * 0.4}px;
+    padding: 0px ${6 + size * 0.2}px;
+  `}
+>
+  {#if variant === "Expert Tag"}
+    <div 
+      class="star-icon" 
+      id="star-icon"
+      style={`
+        color: ${textColor};
+        font-size: ${12 + size * 0.4}px;
+        margin: 0px ${3 + size * 0.1}px;
+      `}
+    >★</div>
+    <p 
+      class="tag-pill-text" 
+      style={`
+        font-size: ${13 + size * 0.5}px;
+        margin-left: ${5 + size * 0.1}px;
+        margin-right: ${5 + size * 0.1}px;
+      `}
+    >
+      {label}
+    </p>
+    <div 
+      class="star-icon" 
+      id="star-icon"
+      style={`
+        font-size: ${12 + size * 0.4}px;
+        margin: 0px ${3 + size * 0.1}px;
+      `}
+    >★</div>  
   {:else}    
-    {#if hasFilterIcon}
-      <div class={["filter-icon", `${color}-filter`].join(" ")} id="filter-icon">✔</div>
+    {#if variant === "Step Filter Tag"}
+      <div 
+        class={"filter-icon"} 
+        style={`
+          color: ${tagColor}; 
+          filter: brightness(170%);
+          margin: 0px ${3 + size * 0.1}px;
+          font-size: ${13 + size * 0.4}px;
+        `} 
+        id="filter-icon"
+      >
+        ✔
+      </div>
     {/if}
-    <p class="tag-pill-text">{label}</p>
-    {#if hasCloseIcon}
-      <div class={["close-icon", `${color}-close`].join(" ")} id="close-icon">×</div>
+    <p 
+      class="tag-pill-text" 
+      style={`
+        font-size: ${13 + size * 0.5}px;
+        margin-left: ${5 + size * 0.1}px;
+        margin-right: ${5 + size * 0.1}px;  
+      `}
+    >
+      {label}
+    </p>
+    {#if variant === "Closeable Tag"}
+      <div 
+        class={"close-icon"} 
+        style={`
+          color: ${tagColor};
+          background-color: ${textColor};
+          font-size: ${18 + size * 0.5}px;
+          height: ${18 + size * 0.5}px;
+          width: ${18 + size * 0.5}px;
+          line-height: ${(18 + size * 0.41)}px;
+        `} 
+        id="close-icon">
+        ×
+      </div>
     {/if}
   {/if}
 </button>
@@ -27,88 +125,30 @@
     border: none;
     font-weight:400;
     cursor: pointer;
-    border-radius: 20px;
-    color: #ffffff;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    margin: 0px 2px;
-    padding: 0px 6px;
     line-height: 0px;
   }
-  .tag-pill-text {
-    margin-left: 5px;
-    margin-right: 5px;
-  }
   div.star-icon {
-    font-size: 12px;
     font-weight: bold;
     border: none;
-    color: #ffffff;
-    margin: 0px 3px;
   }
   div.filter-icon {
-    font-size: 13px;
     font-weight: bold;
-    width: 18px;
   }
   div.close-icon {
     cursor:pointer;
-    font-size: 20px;
     font-weight: bold;
     display:block;
-    height: 18px;
-    width: 18px;
     border-radius: 50%;
     border: none;
-    background-color: #ffffff;
     text-align: center;
     align-items: center;
-    line-height: 17px;
   }
   div.close-icon:hover {
     color: #ffffff;
     background-color: red;      
-  }
-  .primary {
-    background-color: #346376;
-  }
-  .secondary {
-    background-color: #666666;
-  }
-  .tertiary {
-    background-color: #fd7d00;
-  }
-  .quaternary {
-    background-color: #e1bd6f;
-  }
-  .primary-close {
-    color: #346376;
-  }
-  .secondary-close {
-    color: #666666;
-  }
-  .tertiary-close {
-    color: #fd7d00;
-  }
-  .quaternary-close {
-    color: #e1bd6f;
-  }
-  .primary-filter {
-    color: #346376;
-    filter: brightness(170%);
-  }
-  .secondary-filter {
-    color: #666666;
-    filter: brightness(170%);
-  }
-  .tertiary-filter {
-    color: #fd7d00;
-    filter: brightness(170%);
-  }
-  .quaternary-filter {
-    color: #e1bd6f;
-    filter: brightness(170%);
   }
 </style>
