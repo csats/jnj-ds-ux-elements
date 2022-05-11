@@ -7,13 +7,17 @@ module.exports = {
     "../src/*.stories.@(js|jsx|ts|tsx|svelte)",
   ],
   addons: [
-    '@storybook/addon-controls',
+    "@storybook/addon-controls",
+    "@storybook/addon-interactions",
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-svelte-csf",
     "@storybook/addon-storysource",
     "@storybook/addon-a11y",
   ],
+  features: {
+    interactionsDebugger: true,
+  },
   framework: "@storybook/svelte",
   svelteOptions: {
     preprocess: require("svelte-preprocess")({ postcss: true }),
