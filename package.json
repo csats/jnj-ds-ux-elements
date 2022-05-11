@@ -3,12 +3,8 @@
   "version": "1.0.0",
   "description": "JNJ Digital Solutions UX Repository",
   "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/csats/jnj-ds-ux-elements.git"
-  },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry":"https://npm.pkg.github.com"
   },
   "keywords": [
     "components",
@@ -19,6 +15,10 @@
   ],
   "author": "David Lee",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csats/jnj-ds-ux-elements.git"
+  },
   "bugs": {
     "url": "https://github.com/csats/jnj-ds-ux-elements/issues"
   },
