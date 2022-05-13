@@ -4,7 +4,7 @@
   "description": "JNJ Digital Solutions UX Repository",
   "main": "index.js",
   "publishConfig": {
-    "registry":"https://npm.pkg.github.com"
+    "@slee204:registry": "https://npm.pkg.github.com"
   },
   "keywords": [
     "components",
