@@ -12,7 +12,7 @@ jobs:
           ref: ${{ github.event.release.target_commitish }}
       - name: Validate and extract release information
         id: release
-        uses: csats/jnj-ds-ux-elements@v1.0.0
+        uses: manovotny/github-releases-for-automated-package-publishing-action@v1.0.0
 
       - name: Setup Node
         uses: actions/setup-node@v3
