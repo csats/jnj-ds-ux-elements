@@ -6,8 +6,14 @@ import { terser } from "rollup-plugin-terser";
 import postcss from "rollup-plugin-postcss";
 import sveltePreprocess from "svelte-preprocess";
 import alias from "rollup-plugin-alias";
+import pkg from "./package.json";
 
 const production = !process.env.ROLLUP_WATCH;
+
+const name = pkg.name
+  .replace(/^(@\S+\/)?(svelte-)?(\S+)/, "$3")
+  .replace(/^\w/, (m) => m.toUpperCase())
+  .replace(/-\w/g, (m) => m[1].toUpperCase());
 
 function serve() {
   let server;
@@ -35,13 +41,17 @@ function serve() {
 }
 
 export default {
-  input: "src/main.js",
-  output: {
-    sourcemap: true,
-    format: "iife",
-    name: "app",
-    file: "public/build/bundle.js",
-  },
+  input: "src/index.js",
+  output: [
+    { file: pkg.module, format: "es" },
+    { file: pkg.main, format: "umd", name },
+    {
+      file: pkg.main.replace(".js", ".min.js"),
+      format: "iife",
+      name,
+      plugins: [terser()],
+    },
+  ],
   plugins: [
     alias({
       entries: [

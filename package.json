@@ -1,8 +1,10 @@
 {
   "name": "jnj-ds-ux-elements",
   "version": "1.0.0",
+  "svelte": "src/index.js",
+  "module": "public/build/index.mjs",
+  "main": "public/build/index.js",
   "description": "JNJ Digital Solutions UX Repository",
-  "main": "index.js",
   "publishConfig": {
     "@slee204:registry": "https://npm.pkg.github.com"
   },
@@ -25,6 +27,7 @@
   "homepage": "https://github.com/csats/jnj-ds-ux-elements#readme",
   "scripts": {
     "build": "rollup -c",
+    "prepublishOnly": "npm run build",
     "compile-icons": "npx @svgr/cli -d lib/assets",
     "copy-files": "copyfiles --up 1 src/lib/fonts/* lib/*",
     "dev": "rollup -c -w",
@@ -39,7 +42,9 @@
     "lint-fix": "eslint --fix --ext .cjs,.js,.ts,.json,.svelte .",
     "prebuild": "npm run compile-icons",
     "prepublish": "npm run build && npm run copy-files",
-    "test-storybook": "test-storybook"
+    "test-storybook": "test-storybook",
+    "test": "jest test",
+    "test:watch": "npm run test -- --watch"
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",
@@ -52,13 +57,19 @@
     "@storybook/addon-storysource": "^6.4.13",
     "@storybook/addon-svelte-csf": "^1.1.0",
     "@storybook/svelte": "^6.4.18",
+    "@storybook/test-runner": "^0.0.8",
     "@svgr/cli": "^6.2.1",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/svelte": "^3.1.1",
     "autoprefixer": "^10.4.2",
+    "babel-jest": "^28.1.0",
     "babel-loader": "^8.2.3",
     "eslint": "^8.7.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-json": "^3.1.0",
     "eslint-plugin-svelte3": "^3.4.0",
+    "jest": "^28.1.0",
+    "jest-environment-jsdom": "^28.1.0",
     "postcss": "^8.4.5",
     "postcss-cli": "^9.1.0",
     "prettier": "^2.5.1",
@@ -72,15 +83,14 @@
     "stylelint": "^14.2.0",
     "stylelint-config-standard": "^24.0.0",
     "svelte": "^3.46.2",
+    "svelte-jester": "^2.3.2",
     "svelte-loader": "^3.1.2",
     "svelte-preprocess": "^4.10.1",
     "tailwindcss": "^3.0.15"
   },
   "dependencies": {
     "@storybook/addon-interactions": "^6.4.22",
-    "@storybook/test-runner": "^0.0.8",
     "copyfiles": "^2.4.1",
-    "jest": "^28.1.0",
     "rollup-plugin-alias": "^2.2.0",
     "sirv-cli": "^2.0.0"
   }

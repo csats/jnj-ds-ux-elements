@@ -25,3 +25,4 @@ storybook-static
 #build folder
 /public/build/*
 lib/*
+/dist/

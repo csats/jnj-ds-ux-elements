@@ -1,7 +1,7 @@
 <script>
   export let size = 1;
   export let useHover = false;
-  export let variant = "Default"
+  export let variant = "Default";
   export let label = "Static Tag";
   export let clickColor = "#7d7d7d";
   export let tagColor = "#346376";
@@ -18,7 +18,7 @@
 
   /** Restores the style **/
   function outStyle(object) {
-    if(!hasClicked) {
+    if (!hasClicked) {
       object.style.backgroundColor = tagColor;
       object.style.color = textColor;
     }
@@ -35,10 +35,12 @@
   }
 </script>
 
-<button 
-  id="tag-pill" 
+<button
+  id="tag-pill"
   class={"tag-pill"}
-  on:mouseover={`${useHover ? overStyle(this) : ""}`} 
+  on:focus={``}
+  on:blur={``}
+  on:mouseover={`${useHover ? overStyle(this) : ""}`}
   on:mouseout={`${useHover ? outStyle(this) : ""}`}
   on:click={`${useHover ? onClick(this) : ""}`}
   style={`
@@ -50,17 +52,19 @@
   `}
 >
   {#if variant === "Expert Tag"}
-    <div 
-      class="star-icon" 
+    <div
+      class="star-icon"
       id="star-icon"
       style={`
         color: ${textColor};
         font-size: ${12 + size * 0.4}px;
         margin: 0px ${3 + size * 0.1}px;
       `}
-    >★</div>
-    <p 
-      class="tag-pill-text" 
+    >
+      ★
+    </div>
+    <p
+      class="tag-pill-text"
       style={`
         font-size: ${13 + size * 0.5}px;
         margin-left: ${5 + size * 0.1}px;
@@ -69,31 +73,33 @@
     >
       {label}
     </p>
-    <div 
-      class="star-icon" 
+    <div
+      class="star-icon"
       id="star-icon"
       style={`
         font-size: ${12 + size * 0.4}px;
         margin: 0px ${3 + size * 0.1}px;
       `}
-    >★</div>  
-  {:else}    
+    >
+      ★
+    </div>
+  {:else}
     {#if variant === "Step Filter Tag"}
-      <div 
-        class={"filter-icon"} 
+      <div
+        class={"filter-icon"}
         style={`
           color: ${tagColor}; 
           filter: brightness(170%);
           margin: 0px ${3 + size * 0.1}px;
           font-size: ${13 + size * 0.4}px;
-        `} 
+        `}
         id="filter-icon"
       >
         ✔
       </div>
     {/if}
-    <p 
-      class="tag-pill-text" 
+    <p
+      class="tag-pill-text"
       style={`
         font-size: ${13 + size * 0.5}px;
         margin-left: ${5 + size * 0.1}px;
@@ -103,17 +109,18 @@
       {label}
     </p>
     {#if variant === "Closeable Tag"}
-      <div 
-        class={"close-icon"} 
+      <div
+        class={"close-icon"}
         style={`
           color: ${tagColor};
           background-color: ${textColor};
           font-size: ${18 + size * 0.5}px;
           height: ${18 + size * 0.5}px;
           width: ${18 + size * 0.5}px;
-          line-height: ${(18 + size * 0.41)}px;
-        `} 
-        id="close-icon">
+          line-height: ${18 + size * 0.41}px;
+        `}
+        id="close-icon"
+      >
         ×
       </div>
     {/if}
@@ -123,7 +130,7 @@
 <style>
   .tag-pill {
     border: none;
-    font-weight:400;
+    font-weight: 400;
     cursor: pointer;
     display: flex;
     flex-direction: row;
@@ -139,9 +146,9 @@
     font-weight: bold;
   }
   div.close-icon {
-    cursor:pointer;
+    cursor: pointer;
     font-weight: bold;
-    display:block;
+    display: block;
     border-radius: 50%;
     border: none;
     text-align: center;
@@ -149,6 +156,6 @@
   }
   div.close-icon:hover {
     color: #ffffff;
-    background-color: red;      
+    background-color: red;
   }
 </style>
