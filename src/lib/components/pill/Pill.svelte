@@ -38,8 +38,6 @@
 <button
   id="tag-pill"
   class={"tag-pill"}
-  on:focus={``}
-  on:blur={``}
   on:mouseover={`${useHover ? overStyle(this) : ""}`}
   on:mouseout={`${useHover ? outStyle(this) : ""}`}
   on:click={`${useHover ? onClick(this) : ""}`}
