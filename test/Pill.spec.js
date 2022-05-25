@@ -10,6 +10,5 @@ describe("Pill", () => {
       size: 1,
       useHover: true,
     });
-    console.log(test);
   });
 });

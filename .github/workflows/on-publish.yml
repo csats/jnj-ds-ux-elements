@@ -8,6 +8,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.release.target_commitish }}
+      - name: Validate and extract release information
+        id: release
+        uses: csats/jnj-ds-ux-elements@v1.0.0
+
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
@@ -17,7 +23,13 @@ jobs:
         run: npm install && npm run build
       - name: Run Tests
         run: npm run test
-      - name: Publish package on NPM 📦
-        run: npm publish
+      - name: Publish tagged version 📦
+        if: steps.release.outputs.tag != ''
+        run: npm publish --new-version ${{ steps.release.outputs.version }} --tag ${{ steps.release.outputs.tag }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish version 📦
+        if: steps.release.outputs.tag == ''
+        run: npm publish --new-version ${{ steps.release.outputs.version }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
